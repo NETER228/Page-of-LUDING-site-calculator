@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор алкоголя на мероприятие | Luding</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- ПЛАШКА ПРОВЕРКИ ВОЗРАСТА -->
+    <div class="age-overlay" id="ageOverlay">
+        <div class="age-modal">
+            <div class="age-header">
+                <div class="age-logo">LUDING</div>
+                <div class="age-badge">18+</div>
+            </div>
+            <div class="age-title">Подтвердите возраст</div>
+            <div class="age-text">
+                Сайт содержит информацию для лиц совершеннолетнего возраста.<br>
+                Сведения, размещённые на сайте, не являются рекламой, носят исключительно информационный характер и предназначены только для личного пользования.
+            </div>
+            <div class="age-buttons">
+                <button class="age-btn age-btn-yes" onclick="confirmAge()">Мне есть 18 лет</button>
+                <button class="age-btn age-btn-no" onclick="rejectAge()">Мне нет 18 лет</button>
+            </div>
+            <div class="age-footer">Пожалуйста, подтвердите свой возраст для доступа к сайту</div>
+        </div>
+    </div>
+
+    <!-- ОСНОВНОЕ СОДЕРЖИМОЕ -->
+    <div class="bg-overlay"></div>
+    
+    <header class="header">
+        <h1>КАЛЬКУЛЯТОР<br>РАСЧЕТА АЛКОГОЛЯ НА МЕРОПРИЯТИЕ</h1>
+        <div class="header-decor"></div>
+    </header>
+
+    <div class="container" id="calculatorContainer">
+        <div class="content-wrapper">
+            <div class="content" id="content"></div>
+        </div>
+        
+        <div class="nav">
+            <button class="btn-next" id="btn-next" onclick="nextStep()">
+                Далее
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+            <button class="btn-back" id="btn-back" onclick="prevStep()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Вернуться к прошлому вопросу
+            </button>
+        </div>
+
+        <div class="tip-container" id="tipContainer">
+            <span class="tip-icon">●</span>
+            <span class="tip-text" id="tipText">Выберите тип мероприятия</span>
+        </div>
+    </div>
+
+    <div class="info-section">
+        <div class="info-text">
+            <h2>Планируете банкет или фуршет?</h2>
+            <p>Собираетесь отметить с друзьями день рождения, долгожданный юбилей или погулять с размахом на свадьбе и не знаете, как рассчитать необходимое количество вин и крепкого алкоголя?</p>
+            <p>На сайте <strong>Luding</strong> с помощью специального онлайн-калькулятора вы сможете легко посчитать, сколько спиртного предстоит брать на определённое количество человек.</p>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Точный расчёт</h3>
+                    <p>Укажите тип мероприятия, сезон, количество гостей, продолжительность и бюджет — калькулятор сделает всё за вас</p>
+                </div>
+                <div class="info-card">
+                    <h3>Подбор напитков</h3>
+                    <p>Рекомендации по количеству крепкого алкоголя, вина, игристого и воды для вашего мероприятия</p>
+                </div>
+                <div class="info-card">
+                    <h3>Готовый список</h3>
+                    <p>Итоговый результат с точными цифрами — берите с собой в магазин или заказывайте у нас</p>
+                </div>
+            </div>
+
+            <p class="info-bottom">Вам не придётся ломать голову и рассчитывать, сколько бутылок вина, шампанского и других напитков брать. Калькулятор поможет произвести все расчёты и посоветует, какой тип спиртного из портфолио Luding лучше покупать.</p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>
+            LUDING не продаёт и не доставляет алкогольную продукцию. 
+            Вы можете забронировать интересующий товар и забрать его в 
+            <a href="https://nnov.luding.ru/about/shops/" target="_blank">наших магазинах</a>.
+        </p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
