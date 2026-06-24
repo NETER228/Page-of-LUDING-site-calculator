@@ -798,13 +798,15 @@ function renderResult() {
     html += `<span><strong>Бюджет:</strong> ${answers.budget ? {economy:'Эконом',medium:'Средний',vip:'ВИП'}[answers.budget] : '—'}</span>`;
     html += `</div></div>`;
     
+    // ТОЛЬКО КНОПКА "ПЕРЕРАСЧЕТ"
     html += `<div class="result-actions">`;
-    html += `<button class="btn-save" onclick="saveResult()">Посмотреть результат</button>`;
     html += `<button class="btn-recalc" onclick="resetCalculator()">Перерасчет</button>`;
     html += `</div></div>`;
     
     return html;
 }
+
+// Функция saveResult() УДАЛЕНА — больше не нужна
 
 function saveResult() {
     const drinks = calculateDrinks();
