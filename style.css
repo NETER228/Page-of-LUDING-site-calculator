@@ -32,6 +32,7 @@ body {
     min-height: 100vh;
     padding: 0;
     position: relative;
+    overflow-x: hidden;
 }
 
 
@@ -52,6 +53,7 @@ body {
     align-items: center;
     justify-content: center;
     animation: fadeIn 0.5s ease-out;
+    padding: 20px;
 }
 
 .age-overlay.hidden {
@@ -61,9 +63,9 @@ body {
 .age-modal {
     background: #ffffff;
     border-radius: 20px;
-    padding: 48px 40px 36px;
+    padding: 40px 32px 32px;
     max-width: 520px;
-    width: 90%;
+    width: 100%;
     text-align: center;
     box-shadow: 0 24px 80px rgba(0, 0, 0, 0.4);
     animation: slideUp 0.5s ease-out;
@@ -175,19 +177,21 @@ body {
     right: 0;
     bottom: 0;
     z-index: -1;
-    background: url('https://garmony.by/upload/medialibrary/f80/iktd1c7c6532w55ts0lrjz0ke1sk86ki.jpg') center center / cover no-repeat;
+    background: 
+        rgba(0, 0, 0, 0.45),
+        url('https://garmony.by/upload/medialibrary/f80/iktd1c7c6532w55ts0lrjz0ke1sk86ki.jpg') center center / cover no-repeat;
     filter: blur(8px);
     transform: scale(1.05);
 }
 
 
 /* ============================================================
-   HEADER — заголовок с бордовой обводкой каждой буквы
+   HEADER
    ============================================================ */
 .header {
     width: 100%;
     text-align: center;
-    padding: 40px 20px 30px;
+    padding: 40px 16px 30px;
     background: transparent;
     position: relative;
     z-index: 1;
@@ -202,7 +206,6 @@ body {
     line-height: 1.2;
     display: inline-block;
     padding: 8px 20px;
-    /* БОРДОВАЯ ОБВОДКА КАЖДОЙ БУКВЫ через text-shadow */
     text-shadow: 
         1px 0 0 #360404,
         0 1px 0 #8b0000,
@@ -704,8 +707,6 @@ body {
     margin-top: 30px;
 }
 
-/* Кнопка "Посмотреть результат" УДАЛЕНА */
-
 .btn-recalc {
     padding: 14px 40px;
     background: transparent;
@@ -726,6 +727,7 @@ body {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
+
 /* ============================================================
    INFO SECTION
    ============================================================ */
@@ -734,6 +736,7 @@ body {
     margin: 40px auto 20px;
     position: relative;
     z-index: 1;
+    padding: 0 16px;
 }
 
 .info-text {
@@ -878,18 +881,38 @@ body {
 
 
 /* ============================================================
-   RESPONSIVE
+   RESPONSIVE — МОБИЛЬНАЯ АДАПТАЦИЯ
    ============================================================ */
+
+/* Планшеты и маленькие ноутбуки */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.8rem;
+        letter-spacing: 6px;
+        padding: 6px 16px;
+    }
+
+    .content {
+        padding: 24px 28px 16px;
+        min-height: 320px;
+    }
+
+    .question {
+        font-size: 1.3rem;
+    }
+}
+
+/* Телефоны (портретная ориентация) */
 @media (max-width: 640px) {
+    /* HEADER */
     .header {
-        padding: 24px 12px 16px;
+        padding: 20px 12px 16px;
     }
 
     .header h1 {
         font-size: 1.8rem;
         letter-spacing: 4px;
-        padding: 6px 16px;
-        border-width: 1.5px;
+        padding: 6px 14px;
         text-shadow: 
             0.5px 0 0 #8b0000,
             0 0.5px 0 #8b0000,
@@ -898,21 +921,446 @@ body {
     }
 
     .header-decor {
-        width: 80px;
+        width: 60px;
         margin-top: 12px;
+    }
+
+    /* CONTAINER */
+    .container {
+        margin: 16px 10px 0;
+        border-radius: 12px;
+    }
+
+    /* CONTENT */
+    .content {
+        padding: 20px 16px 12px;
+        min-height: 280px;
+    }
+
+    .question {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+    }
+
+    .question .step-badge {
+        font-size: 0.7rem;
+        padding: 2px 12px;
+    }
+
+    /* OPTIONS */
+    .options {
+        gap: 8px;
+    }
+
+    .option {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+        border-radius: 10px;
+    }
+
+    .option .radio-circle {
+        width: 20px;
+        height: 20px;
+    }
+
+    .option .radio-circle::after {
+        width: 8px;
+        height: 8px;
+    }
+
+    .option .tooltip {
+        font-size: 0.7rem;
+        padding: 6px 12px;
+        white-space: normal;
+        max-width: 180px;
+        right: auto;
+        left: 0;
+        bottom: calc(100% + 8px);
+    }
+
+    .option .tooltip::after {
+        right: auto;
+        left: 16px;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .options-grid .option {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+        gap: 8px;
+    }
+
+    /* SLIDER */
+    .slider-container {
+        padding: 12px 4px 20px;
+    }
+
+    .slider-value {
+        font-size: 1.6rem;
+    }
+
+    .slider-value span {
+        font-size: 0.9rem;
+    }
+
+    .slider-wrapper input[type="range"]::-webkit-slider-thumb {
+        width: 20px;
+        height: 20px;
+    }
+
+    .slider-wrapper input[type="range"]::-moz-range-thumb {
+        width: 20px;
+        height: 20px;
+    }
+
+    .slider-container .slider-labels {
+        font-size: 0.75rem;
+    }
+
+    /* COUNTERS */
+    .counter-group {
+        gap: 12px;
+        margin: 12px 0;
+    }
+
+    .counter {
+        padding: 10px 14px;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    .counter-actions button {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+
+    .counter-actions .count {
+        font-size: 1.2rem;
+        min-width: 28px;
+    }
+
+    /* NAVIGATION */
+    .nav {
+        padding: 12px 16px 10px;
+        gap: 10px;
+    }
+
+    .nav button {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        max-width: 100%;
+    }
+
+    .nav button svg {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* TIP */
+    .tip-container {
+        padding: 8px 16px 14px;
+        font-size: 0.8rem;
+        min-height: 40px;
+    }
+
+    .tip-container.hidden-tip {
+        padding: 4px 16px 8px;
+        min-height: 14px;
+    }
+
+    /* RESULT */
+    .result-container h2 {
+        font-size: 1.6rem;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    .result-container > div[style*="margin-bottom"] {
+        padding: 12px 14px !important;
+        margin-bottom: 12px !important;
+        border-radius: 10px !important;
+    }
+
+    .result-container > div[style*="margin-bottom"] > div:first-child {
+        font-size: 1rem !important;
+        margin-bottom: 6px !important;
+    }
+
+    .result-container > div[style*="margin-bottom"] > div {
+        padding: 3px 0 !important;
+        font-size: 0.9rem !important;
+    }
+
+    .result-container > div[style*="margin-bottom"] > div span:last-child {
+        font-size: 0.9rem !important;
+    }
+
+    .result-container > div[style*="color:#666"] {
+        padding: 10px 12px !important;
+        font-size: 0.75rem !important;
+        margin: 10px 0 4px !important;
+    }
+
+    .result-container > div[style*="color:#666"] > div {
+        gap: 2px 10px !important;
+    }
+
+    .btn-recalc {
+        padding: 12px 24px;
+        font-size: 0.9rem;
+        border-radius: 10px;
+        max-width: 100%;
+    }
+
+    /* INFO SECTION */
+    .info-section {
+        margin: 24px auto 12px;
+        padding: 0 12px;
+    }
+
+    .info-text {
+        padding: 24px 18px;
+        border-radius: 12px;
+        font-size: 0.92rem;
+    }
+
+    .info-text h2 {
+        font-size: 1.2rem;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin: 20px 0;
+    }
+
+    .info-card {
+        padding: 16px 14px;
+    }
+
+    .info-card h3 {
+        font-size: 0.95rem;
+    }
+
+    .info-card p {
+        font-size: 0.85rem;
+    }
+
+    /* FOOTER */
+    .footer {
+        margin: 0 12px 16px;
+        padding: 12px 14px;
+        font-size: 0.55rem;
+        border-radius: 8px;
+    }
+
+    /* AGE MODAL */
+    .age-modal {
+        padding: 28px 20px 24px;
+        border-radius: 16px;
+    }
+
+    .age-logo {
+        font-size: 1.5rem;
+        letter-spacing: 2px;
+    }
+
+    .age-title {
+        font-size: 1.3rem;
+    }
+
+    .age-text {
+        font-size: 0.85rem;
+        margin-bottom: 20px;
+    }
+
+    .age-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+        border-radius: 8px;
+        max-width: 100%;
     }
 }
 
+/* Очень маленькие телефоны */
 @media (max-width: 400px) {
     .header h1 {
         font-size: 1.4rem;
         letter-spacing: 2px;
-        padding: 4px 12px;
+        padding: 4px 10px;
         text-shadow: 
             0.5px 0 0 #8b0000,
             0 0.5px 0 #8b0000,
             -0.5px 0 0 #8b0000,
             0 -0.5px 0 #8b0000;
+    }
+
+    .content {
+        padding: 16px 12px 10px;
+        min-height: 240px;
+    }
+
+    .question {
+        font-size: 1rem;
+    }
+
+    .option {
+        padding: 12px 12px;
+        font-size: 0.85rem;
+        border-radius: 8px;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .options-grid .option {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+        gap: 6px;
+    }
+
+    .options-grid .option .radio-circle {
+        width: 16px;
+        height: 16px;
+    }
+
+    .options-grid .option .radio-circle::after {
+        width: 6px;
+        height: 6px;
+    }
+
+    .counter {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .counter-actions button {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
+    }
+
+    .counter-actions .count {
+        font-size: 1rem;
+        min-width: 24px;
+    }
+
+    .nav button {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+        border-radius: 6px;
+    }
+
+    .nav button svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .slider-value {
+        font-size: 1.3rem;
+    }
+
+    .result-container h2 {
+        font-size: 1.3rem;
+    }
+
+    .result-container > div[style*="margin-bottom"] {
+        padding: 10px 12px !important;
+    }
+
+    .result-container > div[style*="margin-bottom"] > div:first-child {
+        font-size: 0.9rem !important;
+    }
+
+    .result-container > div[style*="margin-bottom"] > div {
+        font-size: 0.8rem !important;
+    }
+
+    .btn-recalc {
+        padding: 10px 20px;
+        font-size: 0.8rem;
+    }
+
+    .tip-container {
+        font-size: 0.7rem;
+        padding: 6px 12px 10px;
+    }
+
+    .info-text {
+        padding: 18px 14px;
+        font-size: 0.85rem;
+    }
+}
+
+/* Ландшафтная ориентация на телефонах */
+@media (max-width: 900px) and (orientation: landscape) {
+    .header {
+        padding: 16px 12px 12px;
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+        letter-spacing: 4px;
+        padding: 4px 12px;
+    }
+
+    .content {
+        min-height: 200px;
+        padding: 16px 20px 12px;
+    }
+
+    .question {
+        font-size: 1.1rem;
+        margin-bottom: 16px;
+    }
+
+    .options-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .options-grid .option {
+        padding: 10px 8px;
+        font-size: 0.8rem;
+    }
+
+    .counter-group {
+        gap: 8px;
+        margin: 8px 0;
+    }
+
+    .counter {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+    }
+
+    .counter-actions button {
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+    }
+
+    .container {
+        margin: 12px auto 0;
+        max-width: 600px;
+    }
+
+    .nav {
+        padding: 8px 20px 6px;
+        gap: 8px;
+    }
+
+    .nav button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        max-width: 200px;
     }
 }
 
