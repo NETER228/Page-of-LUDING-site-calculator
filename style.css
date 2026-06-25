@@ -1401,63 +1401,59 @@ body {
     background: var(--btn-red);
     border-radius: 8px;
 }
+
+
+
 /* ============================================================
-   HOW IT WORKS — БЛОК БЕЗ СМАЙЛИКОВ
+   HOW IT WORKS — НА ВСЮ ШИРИНУ (ПОЛНОСТЬЮ ПЕРЕКРЫВАЕТ ФОН)
    ============================================================ */
-.how-it-works {
-    margin-top: 24px;
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 249, 250, 0.95));
-    border: 2px solid var(--border-color);
+.how-it-works-full {
+    width: 100%;
+    padding: 50px 0 40px;
+    margin: 32px 0 0;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
-    overflow: hidden;
+    z-index: 1;
 }
 
-.how-it-works::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--btn-red), #e8a0a0, var(--btn-red));
-    background-size: 200% 100%;
-    animation: shimmer 3s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-    0%, 100% {
-        background-position: -200% 0;
-    }
-    50% {
-        background-position: 200% 0;
-    }
+.how-it-works-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 16px;
 }
 
 .how-header {
     display: flex;
     align-items: center;
     gap: 12px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .how-header .how-icon {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     line-height: 1;
-    color: var(--btn-red);
-    font-weight: 900;
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
 }
 
-.how-it-works h2 {
-    color: var(--text);
+.how-it-works-full h2 {
+    color: #ffffff;
     font-size: 1.5rem;
     margin-bottom: 0;
+    font-weight: 700;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
 }
 
 .how-subtitle {
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     font-size: 0.95rem;
     margin-bottom: 24px;
     padding-left: 4px;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
 }
 
 .how-grid {
@@ -1468,55 +1464,41 @@ body {
 }
 
 .how-card {
-    background: #ffffff;
-    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 12px;
     padding: 22px 20px 20px;
-    border: 1px solid #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
-    overflow: hidden;
-}
-
-.how-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--btn-red);
-    transform: scaleX(0);
-    transition: transform 0.4s ease;
-    transform-origin: left;
-}
-
-.how-card:hover::after {
-    transform: scaleX(1);
 }
 
 .how-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-    border-color: var(--btn-red);
+    transform: translateY(-4px);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
 }
 
 .how-card-icon {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     margin-bottom: 10px;
     display: inline-block;
-    background: var(--primary-light);
+    background: rgba(255, 255, 255, 0.1);
     padding: 6px 12px;
-    border-radius: 10px;
+    border-radius: 8px;
     line-height: 1;
-    color: var(--btn-red);
-    font-weight: 700;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
 }
 
 .how-card h3 {
-    color: var(--text);
+    color: #ffffff;
     font-size: 1.05rem;
     margin-bottom: 10px;
     font-weight: 700;
+    text-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
 }
 
 .how-card ul {
@@ -1526,10 +1508,10 @@ body {
 }
 
 .how-card ul li {
-    padding: 4px 0 4px 20px;
+    padding: 4px 0 4px 18px;
     position: relative;
     font-size: 0.9rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.5;
 }
 
@@ -1537,33 +1519,36 @@ body {
     content: '—';
     position: absolute;
     left: 0;
-    color: var(--btn-red);
-    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+    font-weight: 400;
     font-size: 0.85rem;
 }
 
 .how-card ul li strong {
-    color: var(--text);
+    color: #ffffff;
+    font-weight: 600;
 }
 
 .how-bottom {
-    background: #f8f9fa;
-    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
     padding: 16px 20px;
-    border: 1px solid #e8e8e8;
+    border: 1px solid rgba(255, 255, 255, 0.06);
     margin-top: 4px;
 }
 
 .how-bottom p {
     margin: 0;
     font-size: 0.92rem;
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.7);
     line-height: 1.7;
 }
 
 .how-bottom p strong {
-    color: var(--text);
-    font-weight: 700;
+    color: #ffffff;
+    font-weight: 600;
 }
 
 
@@ -1574,6 +1559,11 @@ body {
     .how-grid {
         grid-template-columns: 1fr 1fr;
     }
+
+    .how-it-works-full {
+        padding: 36px 0 28px;
+        margin: 24px 0 0;
+    }
 }
 
 @media (max-width: 640px) {
@@ -1582,24 +1572,34 @@ body {
         gap: 14px;
     }
 
+    .how-it-works-full {
+        padding: 28px 0 20px;
+        margin: 16px 0 0;
+    }
+
+    .how-it-works-inner {
+        padding: 0 12px;
+    }
+
     .how-card {
-        padding: 18px 16px;
+        padding: 16px 16px;
+        background: rgba(255, 255, 255, 0.08);
     }
 
     .how-card ul li {
         font-size: 0.85rem;
-        padding: 3px 0 3px 18px;
+        padding: 3px 0 3px 16px;
     }
 
     .how-bottom {
-        padding: 14px 16px;
+        padding: 12px 14px;
     }
 
     .how-bottom p {
         font-size: 0.85rem;
     }
 
-    .how-it-works h2 {
+    .how-it-works-full h2 {
         font-size: 1.2rem;
     }
 
@@ -1609,11 +1609,11 @@ body {
     }
 
     .how-header .how-icon {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .how-card-icon {
-        font-size: 1.3rem;
+        font-size: 1rem;
         padding: 4px 10px;
     }
 }
