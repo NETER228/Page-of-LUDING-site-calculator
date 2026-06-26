@@ -16,31 +16,31 @@ let answers = {
     eventType: null,
     season: null,
     guests: { women: 1, men: 1, children: 0 },
-    drinkingLevel: null, // 'low', 'moderate', 'high'
+    drinkingLevel: null,
     duration: 4,
     budget: null,
-    spirits: { vodka: false, whiskey: false, cognac: false, gin: false, rum: false, tequila: false, none: false },
-    wineType: { red: false, white: false, rose: false, sparkling: false, none: false },
+    spirits: { vodka: false, whiskey: false, cognac: false, gin: false, rum: false, tequila: false },
+    wineType: { red: false, white: false, rose: false, sparkling: false },
     softDrinks: { juice: false, soda: false, water: false, lemonade: false, compote: false, none: false }
 };
 
 const steps = [
-    { 
-        id: 1, 
-        question: 'Какое мероприятие планируете?', 
-        type: 'radio', 
+    {
+        id: 1,
+        question: 'Какое мероприятие планируете?',
+        type: 'radio',
         key: 'eventType',
         options: [
             { v: 'banquet', l: 'Банкет', desc: 'Торжественный ужин с полной сервировкой' },
             { v: 'furshet', l: 'Фуршет', desc: 'Лёгкий приём с закусками и напитками' },
             { v: 'wedding', l: 'Свадьба', desc: 'Главное торжество с большим размахом' }
         ],
-        tip: 'Выберите тип мероприятия' 
+        tip: 'Выберите тип мероприятия'
     },
-    { 
-        id: 2, 
-        question: 'В какой сезон?', 
-        type: 'radio', 
+    {
+        id: 2,
+        question: 'В какой сезон?',
+        type: 'radio',
         key: 'season',
         options: [
             { v: 'summer', l: 'Лето', desc: 'Жаркая погода — больше лёгких напитков' },
@@ -48,42 +48,42 @@ const steps = [
             { v: 'winter', l: 'Зима', desc: 'Холод — отличный повод для крепкого' },
             { v: 'spring', l: 'Весна', desc: 'Пробуждение — время для игристого' }
         ],
-        tip: 'Укажите сезон для точного расчёта' 
+        tip: 'Укажите сезон для точного расчёта'
     },
-    { 
-        id: 3, 
-        question: 'Количество гостей', 
-        type: 'counter', 
+    {
+        id: 3,
+        question: 'Количество гостей',
+        type: 'counter',
         key: 'guests',
-        tip: 'Добавьте количество гостей' 
+        tip: 'Добавьте количество гостей'
     },
-    { 
-        id: 4, 
-        question: 'Как активно пьют ваши гости?', 
-        type: 'radio', 
+    {
+        id: 4,
+        question: 'Как активно пьют ваши гости?',
+        type: 'radio',
         key: 'drinkingLevel',
         options: [
             { v: 'low', l: 'Пьют мало', desc: 'В основном символически, больше общаются' },
             { v: 'moderate', l: 'Пьют умеренно', desc: 'Стандартный уровень для банкета' },
             { v: 'high', l: 'Пьют активно', desc: 'Любят застолье с размахом' }
         ],
-        tip: 'Это влияет на расчёт количества алкоголя' 
+        tip: 'Это влияет на расчёт количества алкоголя'
     },
-    { 
-        id: 5, 
-        question: 'Выберите продолжительность мероприятия:', 
-        type: 'slider', 
+    {
+        id: 5,
+        question: 'Выберите продолжительность мероприятия:',
+        type: 'slider',
         key: 'duration',
         min: 2,
         max: 12,
         step: 1,
         label: 'часов',
-        tip: 'Выберите длительность мероприятия' 
+        tip: 'Выберите длительность мероприятия'
     },
-    { 
-        id: 6, 
-        question: 'Какой крепкий алкоголь предпочитаете?', 
-        type: 'checkbox', 
+    {
+        id: 6,
+        question: 'Какой крепкий алкоголь предпочитаете?',
+        type: 'checkbox',
         key: 'spirits',
         options: [
             { v: 'vodka', l: 'Водка' },
@@ -91,29 +91,27 @@ const steps = [
             { v: 'cognac', l: 'Коньяк' },
             { v: 'gin', l: 'Джин' },
             { v: 'rum', l: 'Ром' },
-            { v: 'tequila', l: 'Текила' },
-            { v: 'none', l: 'Никакой' }
+            { v: 'tequila', l: 'Текила' }
         ],
-        tip: 'Выберите крепкие напитки' 
+        tip: 'Выберите крепкие напитки'
     },
-    { 
-        id: 7, 
-        question: 'Какое вино предпочитаете?', 
-        type: 'checkbox', 
+    {
+        id: 7,
+        question: 'Какое вино предпочитаете?',
+        type: 'checkbox',
         key: 'wineType',
         options: [
             { v: 'red', l: 'Красное' },
             { v: 'white', l: 'Белое' },
             { v: 'rose', l: 'Розовое' },
-            { v: 'sparkling', l: 'Игристое' },
-            { v: 'none', l: 'Никакое' }
+            { v: 'sparkling', l: 'Игристое' }
         ],
-        tip: 'Выберите тип вина' 
+        tip: 'Выберите тип вина'
     },
-    { 
-        id: 8, 
-        question: 'Какие безалкогольные напитки нужны?', 
-        type: 'checkbox', 
+    {
+        id: 8,
+        question: 'Какие безалкогольные напитки нужны?',
+        type: 'checkbox',
         key: 'softDrinks',
         options: [
             { v: 'juice', l: 'Сок' },
@@ -123,25 +121,25 @@ const steps = [
             { v: 'compote', l: 'Компот' },
             { v: 'none', l: 'Никакие' }
         ],
-        tip: 'Выберите безалкогольные напитки' 
+        tip: 'Выберите безалкогольные напитки'
     },
-    { 
-        id: 9, 
-        question: 'Какой планируете бюджет на мероприятие?', 
-        type: 'radio', 
+    {
+        id: 9,
+        question: 'Какой планируете бюджет на мероприятие?',
+        type: 'radio',
         key: 'budget',
         options: [
             { v: 'economy', l: 'Эконом вариант', desc: 'Базовый набор без излишеств' },
             { v: 'medium', l: 'Средний', desc: 'Оптимальный баланс цены и качества' },
             { v: 'vip', l: 'ВИП', desc: 'Премиальные напитки для особого случая' }
         ],
-        tip: 'Выберите бюджет' 
+        tip: 'Выберите бюджет'
     },
-    { 
-        id: 10, 
-        question: '', 
+    {
+        id: 10,
+        question: '',
         type: 'result',
-        tip: 'Ваш результат готов!' 
+        tip: 'Ваш результат готов!'
     }
 ];
 
@@ -203,8 +201,7 @@ function renderStep(direction) {
             `;
         });
         html += `</div>`;
-    } 
-    else if (step.type === 'counter') {
+    } else if (step.type === 'counter') {
         html += `<div class="question"><span class="step-badge">Шаг ${currentStep} из 9</span><br>${step.question}</div>`;
         html += `<div class="counter-group">`;
         const items = [
@@ -225,8 +222,7 @@ function renderStep(direction) {
             `;
         });
         html += `</div>`;
-    }
-    else if (step.type === 'slider') {
+    } else if (step.type === 'slider') {
         const val = answers.duration || step.min;
         const pct = ((val - step.min) / (step.max - step.min)) * 100;
         html += `
@@ -249,8 +245,7 @@ function renderStep(direction) {
                 </div>
             </div>
         `;
-    }
-    else if (step.type === 'checkbox') {
+    } else if (step.type === 'checkbox') {
         html += `<div class="question"><span class="step-badge">Шаг ${currentStep} из 9</span><br>${step.question}</div>`;
         html += `<div class="options-grid">`;
         const selected = answers[step.key] || {};
@@ -266,8 +261,7 @@ function renderStep(direction) {
             `;
         });
         html += `</div>`;
-    }
-    else if (step.type === 'result') {
+    } else if (step.type === 'result') {
         html = renderResult();
     }
 
@@ -314,7 +308,7 @@ function updateSlider(value, min, max) {
 
 function toggleCheckbox(key, value, el, isNone) {
     const obj = answers[key] || {};
-    
+
     if (isNone) {
         Object.keys(obj).forEach(k => {
             if (k !== 'none') obj[k] = false;
@@ -331,26 +325,28 @@ function toggleCheckbox(key, value, el, isNone) {
         }
         answers[key] = obj;
         updateButtons();
+        updateTip();
         return;
     }
-    
+
     if (obj.none === true) {
         obj.none = false;
         const parent = el.closest('.options-grid');
         if (parent) {
             parent.querySelectorAll('.option').forEach(o => {
                 const label = o.querySelector('.label-text');
-                if (label && ['Никакой', 'Никакое', 'Никакие'].includes(label.textContent.trim())) {
+                if (label && ['Никакие'].includes(label.textContent.trim())) {
                     o.classList.remove('selected');
                 }
             });
         }
     }
-    
+
     obj[value] = !obj[value];
     answers[key] = obj;
     el.classList.toggle('selected');
     updateButtons();
+    updateTip();
 }
 
 function selectOption(key, value, el) {
@@ -361,6 +357,7 @@ function selectOption(key, value, el) {
     }
     el.classList.add('selected');
     updateButtons();
+    updateTip();
 }
 
 function changeGuest(type, delta) {
@@ -368,6 +365,7 @@ function changeGuest(type, delta) {
     const el = document.getElementById(type[0]);
     if (el) el.textContent = answers.guests[type];
     updateButtons();
+    updateTip();
 }
 
 function updateButtons() {
@@ -399,7 +397,12 @@ function updateButtons() {
         canGo = true;
     } else if (step.type === 'checkbox') {
         const obj = answers[step.key] || {};
-        canGo = Object.values(obj).some(v => v === true);
+        // Для шагов 6 и 7 (алкоголь) — обязательно выбрать хотя бы один вариант
+        if (step.key === 'spirits' || step.key === 'wineType') {
+            canGo = Object.values(obj).some(v => v === true);
+        } else {
+            canGo = Object.values(obj).some(v => v === true);
+        }
     }
 
     nextBtn.disabled = !canGo;
@@ -410,8 +413,13 @@ function updateTip() {
     const tipContainer = document.getElementById('tipContainer');
     const text = document.getElementById('tipText');
     const step = steps[currentStep - 1];
+
+    if (text.style.color === '#b12535') {
+        text.style.color = '#666';
+    }
+
     text.textContent = tips[currentStep] || 'Заполните данные';
-    
+
     let isComplete = false;
     if (step.type === 'radio') {
         isComplete = !!answers[step.key];
@@ -426,12 +434,12 @@ function updateTip() {
     } else if (step.type === 'result') {
         isComplete = true;
     }
-    
+
     if (currentStep === steps.length) {
         tipContainer.classList.add('hidden-tip');
         return;
     }
-    
+
     if (!isComplete) {
         tipContainer.classList.remove('hidden-tip');
     } else {
@@ -439,48 +447,85 @@ function updateTip() {
     }
 }
 
+function showErrorTip(message) {
+    const text = document.getElementById('tipText');
+    const container = document.getElementById('tipContainer');
+    text.textContent = message;
+    text.style.color = '#b12535';
+    container.classList.remove('hidden-tip');
+    setTimeout(() => {
+        text.textContent = tips[currentStep] || 'Заполните данные';
+        text.style.color = '#666';
+        const step = steps[currentStep - 1];
+        const isComplete = checkStepComplete(step);
+        if (isComplete) {
+            container.classList.add('hidden-tip');
+        }
+    }, 3000);
+}
+
+function checkStepComplete(step) {
+    if (step.type === 'radio') {
+        return !!answers[step.key];
+    } else if (step.type === 'counter') {
+        const total = answers.guests.women + answers.guests.men + answers.guests.children;
+        return total > 0;
+    } else if (step.type === 'slider') {
+        return true;
+    } else if (step.type === 'checkbox') {
+        const obj = answers[step.key] || {};
+        return Object.values(obj).some(v => v === true);
+    } else if (step.type === 'result') {
+        return true;
+    }
+    return false;
+}
+
 function nextStep() {
     if (isTransitioning || currentStep >= steps.length) return;
     isTransitioning = true;
-    
-    // Проверка для шагов 6 и 7 (бывшие 5 и 6) — должен быть выбран хотя бы один вариант
+
+    // Проверка для шага 6 (крепкий алкоголь) — должен быть выбран хотя бы один вариант
     if (currentStep === 6) {
         const spirits = answers.spirits || {};
-        const hasSpirit = Object.keys(spirits).some(k => spirits[k] === true && k !== 'none');
-        if (!hasSpirit && !spirits.none) {
+        const hasSpirit = Object.keys(spirits).some(k => spirits[k] === true);
+        if (!hasSpirit) {
+            showErrorTip('Выберите хотя бы один вариант');
             setTimeout(() => { isTransitioning = false; }, 500);
             return;
         }
     }
-    
+
+    // Проверка для шага 7 (вино) — должен быть выбран хотя бы один вариант
     if (currentStep === 7) {
         const wine = answers.wineType || {};
-        const hasWine = Object.keys(wine).some(k => wine[k] === true && k !== 'none');
-        if (!hasWine && !wine.none) {
+        const hasWine = Object.keys(wine).some(k => wine[k] === true);
+        if (!hasWine) {
+            showErrorTip('Выберите хотя бы один вариант');
             setTimeout(() => { isTransitioning = false; }, 500);
             return;
         }
     }
-    
+
     if (currentStep < steps.length) {
         currentStep++;
         renderStep('next');
         document.querySelector('.container').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    
+
     setTimeout(() => { isTransitioning = false; }, 500);
 }
 
 function prevStep() {
     if (isTransitioning || currentStep <= 1) return;
     isTransitioning = true;
-    
+
     if (currentStep > 1) {
         currentStep--;
         renderStep('prev');
         document.querySelector('.container').scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-    
+
     setTimeout(() => { isTransitioning = false; }, 500);
 }
 
@@ -492,73 +537,73 @@ function resetCalculator() {
         drinkingLevel: null,
         duration: 4,
         budget: null,
-        spirits: { vodka: false, whiskey: false, cognac: false, gin: false, rum: false, tequila: false, none: false },
-        wineType: { red: false, white: false, rose: false, sparkling: false, none: false },
+        spirits: { vodka: false, whiskey: false, cognac: false, gin: false, rum: false, tequila: false },
+        wineType: { red: false, white: false, rose: false, sparkling: false },
         softDrinks: { juice: false, soda: false, water: false, lemonade: false, compote: false, none: false }
     };
-    
+
     currentStep = 1;
     const nav = document.querySelector('.nav');
     if (nav) nav.classList.remove('hidden-nav');
-    
+
     renderStep();
     document.querySelector('.container').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 function calculateDrinks() {
-    const total = answers.guests.women + answers.guests.men + answers.guests.children || 10;
+    const women = answers.guests.women || 0;
+    const men = answers.guests.men || 0;
+    const children = answers.guests.children || 0;
+    const total = women + men + children || 10;
+    const adults = women + men;
+    
+    // Коэффициент: если детей больше чем взрослых, уменьшаем алкоголь
+    let childFactor = 1;
+    if (children > adults && adults > 0) {
+        childFactor = Math.max(0.3, adults / (adults + children * 0.7));
+    }
+    
     const hours = answers.duration || 4;
     const isSummer = answers.season === 'summer';
     const isWinter = answers.season === 'winter';
     const isAutumnSpring = answers.season === 'spring' || answers.season === 'autumn';
     const isVip = answers.budget === 'vip';
     const isEconomy = answers.budget === 'economy';
-    
-    // Коэффициент активности питья
+
     let drinkingCoef = 1;
     if (answers.drinkingLevel === 'low') drinkingCoef = 0.6;
     else if (answers.drinkingLevel === 'moderate') drinkingCoef = 1;
     else if (answers.drinkingLevel === 'high') drinkingCoef = 1.4;
-    
-    // Базовые нормы на человека за 4 часа (в бутылках)
-    // Для крепкого: 0.5 л бутылка
-    // Для вина: 0.75 л бутылка
-    // Для воды: 0.5 л бутылка
-    const baseSpirit = 0.25;      // 0.25 бут. 0.5л на человека за 4 часа
-    const baseWine = 0.35;        // 0.35 бут. 0.75л на человека за 4 часа
-    const baseSparkling = 0.25;   // 0.25 бут. 0.75л на человека за 4 часа
-    const baseWater = 0.8;        // 0.8 бут. 0.5л на человека за 4 часа
-    const baseJuice = 0.2;        // 0.2 бут. 1л на человека за 4 часа
-    const baseSoda = 0.2;         // 0.2 бут. 0.5л на человека за 4 часа
-    const baseLemonade = 0.15;    // 0.15 бут. 0.5л на человека за 4 часа
-    const baseCompote = 0.1;      // 0.1 бут. 0.5л на человека за 4 часа
-    
+
+    const baseSpirit = 0.25;
+    const baseWine = 0.35;
+    const baseSparkling = 0.25;
+    const baseWater = 0.8;
+    const baseJuice = 0.2;
+    const baseSoda = 0.2;
+    const baseLemonade = 0.15;
+    const baseCompote = 0.1;
+
     let hoursCoef = hours / 4;
     let seasonCoef = 1;
     let budgetCoef = 1;
-    
-    if (isSummer) {
-        seasonCoef = 1.15;
-    }
-    if (isWinter) {
-        seasonCoef = 1.05;
-    }
-    if (isAutumnSpring) {
-        seasonCoef = 1;
-    }
-    
+
+    if (isSummer) seasonCoef = 1.15;
+    if (isWinter) seasonCoef = 1.05;
+    if (isAutumnSpring) seasonCoef = 1;
+
     if (isVip) budgetCoef = 1.2;
     if (isEconomy) budgetCoef = 0.8;
-    
-    const spiritsSelected = Object.keys(answers.spirits).filter(k => answers.spirits[k] && k !== 'none');
-    const wineSelected = Object.keys(answers.wineType).filter(k => answers.wineType[k] && k !== 'none');
+
+    const spiritsSelected = Object.keys(answers.spirits).filter(k => answers.spirits[k]);
+    const wineSelected = Object.keys(answers.wineType).filter(k => answers.wineType[k]);
     const softSelected = Object.keys(answers.softDrinks).filter(k => answers.softDrinks[k] && k !== 'none');
-    
+
     const hasSpirit = spiritsSelected.length > 0;
     const hasWine = wineSelected.length > 0;
     const hasSoft = softSelected.length > 0;
     const hasSparkling = wineSelected.includes('sparkling');
-    
+
     let result = {
         spirits: {},
         wine: {},
@@ -566,42 +611,32 @@ function calculateDrinks() {
         water: 0,
         soft: {}
     };
-    
+
     // === ВОДА ===
-    // Вода нужна всем, даже если не пьют алкоголь
     let waterTotal = Math.ceil(total * baseWater * hoursCoef * seasonCoef * budgetCoef);
-    // Если алкоголя нет — воды немного больше
-    if (!hasSpirit && !hasWine) {
-        waterTotal = Math.ceil(waterTotal * 1.2);
+    if (children > adults && adults > 0) {
+        waterTotal = Math.ceil(waterTotal * (1 + (children - adults) / total * 0.3));
     }
-    // Если активно пьют — воды больше
-    if (answers.drinkingLevel === 'high') {
-        waterTotal = Math.ceil(waterTotal * 1.15);
-    }
-    if (isSummer) {
-        waterTotal = Math.ceil(waterTotal * 1.2);
-    }
+    if (answers.drinkingLevel === 'high') waterTotal = Math.ceil(waterTotal * 1.15);
+    if (isSummer) waterTotal = Math.ceil(waterTotal * 1.2);
     result.water = Math.max(2, waterTotal);
+
+    // === АЛКОГОЛЬ (только на взрослых) ===
+    const adultTotal = Math.max(1, adults);
     
-    // === КРЕПКИЕ НАПИТКИ ===
     if (hasSpirit) {
-        let spiritTotal = Math.ceil(total * baseSpirit * hoursCoef * seasonCoef * budgetCoef * drinkingCoef);
+        let spiritTotal = Math.ceil(adultTotal * baseSpirit * hoursCoef * seasonCoef * budgetCoef * drinkingCoef * childFactor);
         if (isWinter) spiritTotal = Math.ceil(spiritTotal * 1.2);
         if (hours >= 8) spiritTotal = Math.ceil(spiritTotal * 1.3);
-        
-        // Минимум 1 бутылка, если выбрали крепкий
         spiritTotal = Math.max(1, spiritTotal);
-        
+
         if (spiritsSelected.length === 1) {
-            // Если выбран только один вид — вся сумма идёт на него
             result.spirits[spiritsSelected[0]] = spiritTotal;
         } else {
-            // Распределяем между выбранными
             const perType = Math.max(1, Math.floor(spiritTotal / spiritsSelected.length));
             spiritsSelected.forEach(name => {
                 result.spirits[name] = perType;
             });
-            // Корректируем сумму
             let sum = Object.values(result.spirits).reduce((a, b) => a + b, 0);
             if (sum > spiritTotal && Object.keys(result.spirits).length > 1) {
                 let diff = sum - spiritTotal;
@@ -616,34 +651,28 @@ function calculateDrinks() {
             }
         }
     }
-    
-    // === ВИНО ===
+
     if (hasWine) {
-        let wineTotal = Math.ceil(total * baseWine * hoursCoef * seasonCoef * budgetCoef * drinkingCoef);
+        let wineTotal = Math.ceil(adultTotal * baseWine * hoursCoef * seasonCoef * budgetCoef * drinkingCoef * childFactor);
         if (hours >= 8) wineTotal = Math.ceil(wineTotal * 1.2);
-        
-        // Минимум 1 бутылка, если выбрали вино
         wineTotal = Math.max(1, wineTotal);
-        
+
         const stillWines = wineSelected.filter(w => w !== 'sparkling');
         const hasStillWine = stillWines.length > 0;
-        
-        // Игристое
+
         if (hasSparkling) {
-            let sparklingTotal = Math.ceil(total * baseSparkling * hoursCoef * seasonCoef * budgetCoef * drinkingCoef);
+            let sparklingTotal = Math.ceil(adultTotal * baseSparkling * hoursCoef * seasonCoef * budgetCoef * drinkingCoef * childFactor);
             if (isSummer) sparklingTotal = Math.ceil(sparklingTotal * 1.3);
             if (hours >= 8) sparklingTotal = Math.ceil(sparklingTotal * 1.2);
             result.sparkling = Math.max(1, sparklingTotal);
         }
-        
-        // Обычное вино
+
         if (hasStillWine) {
             let stillTotal = wineTotal;
-            // Если есть игристое — отдаём ему часть
             if (hasSparkling) {
                 stillTotal = Math.max(1, Math.ceil(wineTotal * 0.6));
             }
-            
+
             if (stillWines.length === 1) {
                 result.wine[stillWines[0]] = stillTotal;
             } else {
@@ -666,39 +695,37 @@ function calculateDrinks() {
             }
         }
     }
-    
-    // === БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ ===
+
+    // === БЕЗАЛКОГОЛЬНЫЕ ===
     if (hasSoft) {
-        // Сок — всегда минимум 1 бутылка (1л), если выбран
+        const softChildCoef = (children > adults && adults > 0) ? 1 + (children - adults) / total * 0.5 : 1;
+        
         if (softSelected.includes('juice')) {
-            let juiceTotal = Math.ceil(total * baseJuice * hoursCoef * budgetCoef);
+            let juiceTotal = Math.ceil(total * baseJuice * hoursCoef * budgetCoef * softChildCoef);
             if (isSummer) juiceTotal = Math.ceil(juiceTotal * 1.15);
             if (answers.drinkingLevel === 'high') juiceTotal = Math.ceil(juiceTotal * 1.1);
             result.soft.juice = Math.max(1, juiceTotal);
         }
-        
-        // Газировка
+
         if (softSelected.includes('soda')) {
-            let sodaTotal = Math.ceil(total * baseSoda * hoursCoef * budgetCoef);
+            let sodaTotal = Math.ceil(total * baseSoda * hoursCoef * budgetCoef * softChildCoef);
             if (isSummer) sodaTotal = Math.ceil(sodaTotal * 1.3);
             if (answers.drinkingLevel === 'high') sodaTotal = Math.ceil(sodaTotal * 1.1);
             result.soft.soda = Math.max(1, sodaTotal);
         }
-        
-        // Лимонад
+
         if (softSelected.includes('lemonade')) {
-            let lemonadeTotal = Math.ceil(total * baseLemonade * hoursCoef * budgetCoef);
+            let lemonadeTotal = Math.ceil(total * baseLemonade * hoursCoef * budgetCoef * softChildCoef);
             if (isSummer) lemonadeTotal = Math.ceil(lemonadeTotal * 1.3);
             result.soft.lemonade = Math.max(1, lemonadeTotal);
         }
-        
-        // Компот
+
         if (softSelected.includes('compote')) {
-            let compoteTotal = Math.ceil(total * baseCompote * hoursCoef * budgetCoef);
+            let compoteTotal = Math.ceil(total * baseCompote * hoursCoef * budgetCoef * softChildCoef);
             result.soft.compote = Math.max(1, compoteTotal);
         }
     }
-    
+
     return result;
 }
 
@@ -706,20 +733,19 @@ function renderResult() {
     const drinks = calculateDrinks();
     const hours = answers.duration || 4;
     const total = answers.guests.women + answers.guests.men + answers.guests.children || 10;
-    
-    const spiritsSelected = Object.keys(answers.spirits).filter(k => answers.spirits[k] && k !== 'none');
-    const wineSelected = Object.keys(answers.wineType).filter(k => answers.wineType[k] && k !== 'none');
+
+    const spiritsSelected = Object.keys(answers.spirits).filter(k => answers.spirits[k]);
+    const wineSelected = Object.keys(answers.wineType).filter(k => answers.wineType[k]);
     const softSelected = Object.keys(answers.softDrinks).filter(k => answers.softDrinks[k] && k !== 'none');
-    
+
     const hasSpirit = spiritsSelected.length > 0;
     const hasWine = wineSelected.length > 0;
     const hasSoft = softSelected.length > 0;
-    
+
     const drinkingLabel = { low: 'Мало', moderate: 'Умеренно', high: 'Активно' }[answers.drinkingLevel] || '—';
-    
+
     let html = `<div class="result-container"><h2>ИТОГО:</h2>`;
-    
-    // КРЕПКИЕ
+
     html += `<div style="margin-bottom:16px;text-align:left;background:#f8f9fa;border-radius:12px;padding:16px 20px;border:2px solid #e8e8e8;">`;
     html += `<div style="font-weight:700;font-size:1.1rem;margin-bottom:8px;color:#b12535;">КРЕПКИЕ НАПИТКИ</div>`;
     if (hasSpirit && Object.keys(drinks.spirits).length > 0) {
@@ -734,8 +760,7 @@ function renderResult() {
         html += `<div style="color:#999;">не требуются</div>`;
     }
     html += `</div>`;
-    
-    // ВИНО
+
     html += `<div style="margin-bottom:16px;text-align:left;background:#f8f9fa;border-radius:12px;padding:16px 20px;border:2px solid #e8e8e8;">`;
     html += `<div style="font-weight:700;font-size:1.1rem;margin-bottom:8px;color:#b12535;">ВИНО</div>`;
     if (hasWine) {
@@ -761,8 +786,7 @@ function renderResult() {
         html += `<div style="color:#999;">не требуется</div>`;
     }
     html += `</div>`;
-    
-    // БЕЗАЛКОГОЛЬНЫЕ
+
     html += `<div style="margin-bottom:16px;text-align:left;background:#f8f9fa;border-radius:12px;padding:16px 20px;border:2px solid #e8e8e8;">`;
     html += `<div style="font-weight:700;font-size:1.1rem;margin-bottom:8px;color:#b12535;">БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ</div>`;
     if (hasSoft && Object.keys(drinks.soft).length > 0) {
@@ -778,8 +802,7 @@ function renderResult() {
         html += `<div style="color:#999;">не требуются</div>`;
     }
     html += `</div>`;
-    
-    // ВОДА
+
     html += `<div style="margin-bottom:16px;text-align:left;background:#f8f9fa;border-radius:12px;padding:16px 20px;border:2px solid #e8e8e8;">`;
     html += `<div style="font-weight:700;font-size:1.1rem;margin-bottom:8px;color:#b12535;">ВОДА</div>`;
     html += `<div style="display:flex;justify-content:space-between;padding:4px 0;">`;
@@ -787,8 +810,7 @@ function renderResult() {
     html += `<span style="font-weight:600;">${drinks.water} бут. (0.5 л)</span>`;
     html += `</div>`;
     html += `</div>`;
-    
-    // ИНФОРМАЦИЯ
+
     html += `<div style="font-size:0.85rem;color:#666;margin:12px 0 4px;text-align:left;background:#f8f9fa;border-radius:8px;padding:12px 16px;border:1px solid #e8e8e8;">`;
     html += `<div style="display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:center;">`;
     html += `<span><strong>Гости:</strong> ${total} чел.</span>`;
@@ -797,30 +819,27 @@ function renderResult() {
     html += `<span><strong>Сезон:</strong> ${answers.season ? {summer:'Лето',autumn:'Осень',winter:'Зима',spring:'Весна'}[answers.season] : '—'}</span>`;
     html += `<span><strong>Бюджет:</strong> ${answers.budget ? {economy:'Эконом',medium:'Средний',vip:'ВИП'}[answers.budget] : '—'}</span>`;
     html += `</div></div>`;
-    
-    // ТОЛЬКО КНОПКА "ПЕРЕРАСЧЕТ"
+
     html += `<div class="result-actions">`;
     html += `<button class="btn-recalc" onclick="resetCalculator()">Перерасчет</button>`;
     html += `</div></div>`;
-    
+
     return html;
 }
-
-// Функция saveResult() УДАЛЕНА — больше не нужна
 
 function saveResult() {
     const drinks = calculateDrinks();
     const total = answers.guests.women + answers.guests.men + answers.guests.children || 10;
     const hours = answers.duration || 4;
     const drinkingLabel = { low: 'Мало', moderate: 'Умеренно', high: 'Активно' }[answers.drinkingLevel] || '—';
-    
+
     let msg = `РЕЗУЛЬТАТ РАСЧЁТА\n\n`;
     msg += `Гостей: ${total} чел.\n`;
     msg += `Активность питья: ${drinkingLabel}\n`;
     msg += `Продолжительность: ${hours} часов\n`;
     msg += `Сезон: ${answers.season ? {summer:'Лето',autumn:'Осень',winter:'Зима',spring:'Весна'}[answers.season] : '—'}\n`;
     msg += `Бюджет: ${answers.budget ? {economy:'Эконом',medium:'Средний',vip:'ВИП'}[answers.budget] : '—'}\n\n`;
-    
+
     msg += `--- КРЕПКИЕ НАПИТКИ ---\n`;
     if (Object.keys(drinks.spirits).length > 0) {
         Object.keys(drinks.spirits).forEach(key => {
@@ -829,7 +848,7 @@ function saveResult() {
     } else {
         msg += `не требуются\n`;
     }
-    
+
     msg += `\n--- ВИНО ---\n`;
     if (Object.keys(drinks.wine).length > 0) {
         Object.keys(drinks.wine).forEach(key => {
@@ -842,7 +861,7 @@ function saveResult() {
     if (Object.keys(drinks.wine).length === 0 && drinks.sparkling === 0) {
         msg += `не требуется\n`;
     }
-    
+
     msg += `\n--- БЕЗАЛКОГОЛЬНЫЕ НАПИТКИ ---\n`;
     if (Object.keys(drinks.soft).length > 0) {
         Object.keys(drinks.soft).forEach(key => {
@@ -852,18 +871,19 @@ function saveResult() {
     } else {
         msg += `не требуются\n`;
     }
-    
+
     msg += `\n--- ВОДА ---\n`;
     msg += `Вода питьевая: ${drinks.water} бут. (0.5 л)\n`;
-    
+
     msg += `\nСпасибо, что воспользовались калькулятором Luding!`;
     alert(msg);
 }
 
-// Инициализация при загрузке
 window.onload = function() {
     if (sessionStorage.getItem('ageVerified') === 'true') {
-        document.getElementById('ageOverlay').classList.add('hidden');
+        const overlay = document.getElementById('ageOverlay');
+        if (overlay) overlay.classList.add('hidden');
     }
+
     renderStep();
 };
