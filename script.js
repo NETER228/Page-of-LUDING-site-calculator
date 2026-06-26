@@ -1,7 +1,10 @@
 // ===== AGE VERIFICATION =====
 function confirmAge() {
-    document.getElementById('ageOverlay').classList.add('hidden');
-    sessionStorage.setItem('ageVerified', 'true');
+    const overlay = document.getElementById('ageOverlay');
+    if (overlay) {
+        overlay.classList.add('hidden');
+        sessionStorage.setItem('ageVerified', 'true');
+    }
 }
 
 function rejectAge() {
@@ -429,7 +432,6 @@ function updateTip() {
     const text = document.getElementById('tipText');
     const step = steps[currentStep - 1];
 
-    // Восстанавливаем цвет, если он был изменён ошибкой
     if (text.style.color === '#b12535') {
         text.style.color = '#666';
     }
@@ -504,7 +506,6 @@ function nextStep() {
     if (isTransitioning || currentStep >= steps.length) return;
     isTransitioning = true;
 
-    // Проверка для шага 6 (крепкий алкоголь)
     if (currentStep === 6) {
         const spirits = answers.spirits || {};
         const hasSpirit = Object.keys(spirits).some(k => spirits[k] === true && k !== 'none');
@@ -515,7 +516,6 @@ function nextStep() {
         }
     }
 
-    // Проверка для шага 7 (вино)
     if (currentStep === 7) {
         const wine = answers.wineType || {};
         const hasWine = Object.keys(wine).some(k => wine[k] === true && k !== 'none');
@@ -584,4 +584,7 @@ function calculateDrinks() {
     let drinkingCoef = 1;
     if (answers.drinkingLevel === 'low') drinkingCoef = 0.6;
     else if (answers.drinkingLevel === 'moderate') drinkingCoef = 1;
-    else if (answers.drin
+    else if (answers.drinkingLevel === 'high') drinkingCoef = 1.4;
+
+    const baseSpirit = 0.25;
+   
